@@ -50,12 +50,11 @@ ARCHIVE_FILE = DATA_DIR / "predictions.json"
 
 NO_PROXY = {"http": "", "https": ""}
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                  "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Accept-Language": "zh-CN,zh;q=0.9",
+    "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "Referer": "https://static.sporttery.cn/",
 }
-
-
+NO_PROXY = {"http": "", "https": ""}
 # ── 奖级 ──────────────────────────────────────────────
 
 def _prize(hit_front, hit_back):
@@ -114,7 +113,7 @@ def fetch_from_sporttery(timeout=20):
 
         records = []
         for item in data.get("value", {}).get("list", []):
-            period = item.get("lotteryDrawPeriod", "")
+            period = item.get("lotteryDrawNum", "")
             result_str = item.get("lotteryDrawResult", "")
             nums = [int(x) for x in result_str.split() if x.isdigit()]
             if len(nums) == 7:

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
+r"""
 排列三（排列3）数据分析工具 v3.0 数据分析工具 v3.0 (2026-04 官方接口迁移)
 用法:
   python pick3.py fetch      # 联网抓取最新数据
@@ -44,6 +44,9 @@ NO_PROXY = {"http": "", "https": ""}
 
 
 
+DATA_DIR     = Path.home() / ".pl3_data"
+HIST_FILE    = DATA_DIR / "history.json"
+
 # ── 1. 数据抓取 ──────────────────────────────────────
 
 def fetch_from_sporttery(page_size=100, timeout=20):
@@ -66,7 +69,7 @@ def fetch_from_sporttery(page_size=100, timeout=20):
 
         records = []
         for item in data.get("value", {}).get("list", []):
-            period = item.get("lotteryDrawPeriod", "")
+            period = item.get("lotteryDrawNum", "")
             result_str = item.get("lotteryDrawResult", "")
             nums = [int(x) for x in result_str.split() if x.isdigit()]
             if len(nums) == 3:
