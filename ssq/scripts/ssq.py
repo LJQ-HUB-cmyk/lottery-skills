@@ -89,10 +89,10 @@ def cmd_fetch(_):
     print("  [Step 1] 联网抓取")
     print("=" * 58)
 
-    # ── 唯一官方源：cwl.gov.cn GET ──
+    # ── 唯一官方源：cwl.gov.cn GET（参数硬编码，不可外部修改）──
     records = fetch_from_cwl(100)
     if not records:
-        print("FETCH_FAILED")
+        print("FETCH_FAILED:网络请求失败或 API 返回异常")
         return
     print(f"  cwl.gov.cn: 获取 {len(records)} 期")
 
@@ -109,6 +109,17 @@ def cmd_fetch(_):
     rs  = " ".join(f"{n:02d}" for n in lat["red_balls"])
     print(f"新增 {new_n} 期，本地共 {len(existing)} 期")
     print(f"最新: {lat['period']}  红 {rs}  蓝 {lat['blue_ball']:02d}")
+
+    # ── 验证闭环 ──
+    api_latest = records[0]["period"] if records else None
+    local_latest = lat["period"]
+    if api_latest and api_latest == local_latest:
+        print(f"FETCH_OK:{local_latest}")
+    elif api_latest and api_latest > local_latest:
+        print(f"UPDATE_FAILED:本地 {local_latest} 仍落后于 API {api_latest}")
+    else:
+        print(f"FETCH_OK:{local_latest}")
+
 
     # ── 自动复盘 ──
     if new_n > 0 and len(existing) > 1:

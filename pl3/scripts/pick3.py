@@ -106,7 +106,7 @@ def cmd_fetch(_):
 
     records = fetch_from_sporttery(100)
     if not records:
-        print("FETCH_FAILED")
+        print("FETCH_FAILED:网络请求失败或 API 返回异常")
         return
 
     existing  = _load_history()
@@ -122,6 +122,17 @@ def cmd_fetch(_):
     nums = f"{lat['hundreds']} {lat['tens']} {lat['units']}"
     print(f"新增 {new_n} 期，本地共 {len(existing)} 期")
     print(f"最新: {lat['period']}  开奖号 {nums}  [{lat['group_type']}]")
+
+    # ── 验证闭环 ──
+    api_latest = records[0]["period"] if records else None
+    local_latest = lat["period"]
+    if api_latest and api_latest == local_latest:
+        print(f"FETCH_OK:{local_latest}")
+    elif api_latest and api_latest > local_latest:
+        print(f"UPDATE_FAILED:本地 {local_latest} 仍落后于 API {api_latest}")
+    else:
+        print(f"FETCH_OK:{local_latest}")
+
 def _load_history():
     if HIST_FILE.exists():
         try: return json.loads(HIST_FILE.read_text(encoding="utf-8"))
