@@ -4,7 +4,7 @@ description: 双色球走势数据分析工具。官方API（cwl.gov.cn）单一
 metadata: {"openclaw": {"requires": {"bins": ["python"]}, "os": ["win32", "darwin", "linux"]}}
 ---
 
-# 双色球（v6.2 2026-04 官方接口固化） v6.1
+# 双色球（v6.2 2026-04 官方接口固化）
 
 概率 1/17,720,024。所有计算由 Python 完成，Claude 只做解读，绝不自行运算。
 
@@ -16,13 +16,14 @@ metadata: {"openclaw": {"requires": {"bins": ["python"]}, "os": ["win32", "darwi
 D:\Conda\envs\ssq-lottery-analysis\python.exe -c "import requests,bs4; print('就绪')"
 ```
 
-## v6.1 改进
+## v6.2 改进
 
-- **数据源**：`cwl.gov.cn` 官方原生API（GET），无缓存、无第三方中转
+- **数据源**：`cwl.gov.cn` 官方原生API（GET），无缓存、无第三方中转，唯一可信源
 - **分位分析**：6 个红球位置独立统计（频率、012路、奇偶、质合），每位 TOP3 推荐 + 2 注组合
 - **蓝球独立预测**：独立评分模块，蓝球 TOP3
 - 多窗口分析：10/20/30/50 期并行
 - 特征画像推荐 + 候选池 5000
+- 已删除所有废弃数据源（500.com / 新浪）
 
 ## 工作流路由
 

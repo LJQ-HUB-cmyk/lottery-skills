@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-大乐透分析工具 v1.0
+大乐透分析工具 v2.0
 用法:
   python dlt.py fetch      # 联网抓取最新数据 + 自动复盘
   python dlt.py analyze    # 分析最近30期，输出JSON
@@ -54,7 +54,8 @@ HEADERS = {
     "Accept": "application/json, text/javascript, */*; q=0.01",
     "Referer": "https://static.sporttery.cn/",
 }
-NO_PROXY = {"http": "", "https": ""}
+
+
 # ── 奖级 ──────────────────────────────────────────────
 
 def _prize(hit_front, hit_back):

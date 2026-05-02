@@ -41,11 +41,10 @@ HEADERS = {
     "Referer": "https://static.sporttery.cn/",
 }
 NO_PROXY = {"http": "", "https": ""}
+DATA_DIR  = Path.home() / ".pl3_data"
+HIST_FILE = DATA_DIR / "history.json"
+ARCHIVE_FILE = DATA_DIR / "predictions.json"
 
-
-
-DATA_DIR     = Path.home() / ".pl3_data"
-HIST_FILE    = DATA_DIR / "history.json"
 
 # ── 1. 数据抓取 ──────────────────────────────────────
 

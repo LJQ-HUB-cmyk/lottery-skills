@@ -1,10 +1,10 @@
 ﻿---
 name: 排列3
-description: 排列3走势数据分析工具。中彩网 jc.zhcw.com API 数据抓取（对应走势图 zhcw.com/sjtb/pl3/），多维度分析（遗漏值、冷热号、奇偶比、大小比、跨度、和值、012路、组选形态），生成智能号码推荐。Trigger: "分析排列三" "分析排列3" "推荐排列三号码" "排列三走势" "排列三冷热号" "排列3预测" "排列三预测" "排列3分析"
+description: 排列3走势数据分析工具。体彩官方API（webapi.sporttery.cn，gameNo=35）单一可靠源，多维度分析（遗漏值、冷热号、奇偶比、大小比、跨度、和值、012路、组选形态），生成智能号码推荐。Trigger: "分析排列三" "分析排列3" "推荐排列三号码" "排列三走势" "排列三冷热号" "排列3预测" "排列三预测" "排列3分析"
 metadata: {"openclaw": {"requires": {"bins": ["python"]}, "os": ["win32"]}}
 ---
 
-# 排列三
+# 排列三（v3.0 2026-04 官方接口迁移）
 
 概率 1/1,000。所有计算由 Python 完成，Claude 只做解读，绝不自行运算。
 
@@ -42,9 +42,7 @@ D:\Conda\envs\ssq-lottery-analysis\python.exe {baseDir}/scripts/pick3.py fetch [
 
 支持 `--periods` 参数：30（默认）、50、100 期。
 
-抓取中彩网 API 数据，新浪备用。自动处理翻页（每页30条）。
-
-抓取新浪排列三基本走势数据，自动保存到 `~/.pl3_data/history.json`。
+从体彩官方 API（webapi.sporttery.cn，gameNo=35）抓取数据。自动处理翻页（每页30条）。
 
 ## Step 2：统计分析
 
@@ -96,9 +94,9 @@ D:\Conda\envs\ssq-lottery-analysis\python.exe {baseDir}/scripts/pick3.py all
 
 | 来源 | URL | 用途 |
 |------|-----|------|
-| 中彩网开奖API | `https://jc.zhcw.com/port/client_json.php?gameNo=35` | 主数据源（对应走势图页 zhcw.com/sjtb/pl3/），JSON格式，支持翻页 |
-| 中彩网专家预测 | `https://www.zhcw.com/czfw/sjfx/pl3/` | 数据分析参考，专家胆码/杀码趋势 |
-| 新浪基本走势 | `https://lotto.sina.cn/trend/qxc_qlc_proxy.d.html?lottoType=p3&actionType=chzs` | 备用数据源，固定50期 |
+| 体彩官方API | `https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry?gameNo=35` | 唯一数据源，GET 请求 |
+
+废弃数据源（永远不要再使用）：中彩网 (jc.zhcw.com)、新浪 (lotto.sina.cn)
 
 ## 故障处理
 
