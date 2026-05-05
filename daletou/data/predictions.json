@@ -1,0 +1,386 @@
+[
+  {
+    "timestamp": "2026-04-22 18:23",
+    "based_on": "2026042",
+    "window": 30,
+    "predictions": [
+      {
+        "idx": 1,
+        "strategy": "覆盖优化A",
+        "front": [
+          4,
+          15,
+          18,
+          26,
+          29
+        ],
+        "back": [
+          5,
+          10
+        ],
+        "score": 10
+      },
+      {
+        "idx": 2,
+        "strategy": "覆盖优化B",
+        "front": [
+          6,
+          15,
+          20,
+          24,
+          33
+        ],
+        "back": [
+          5,
+          12
+        ],
+        "score": 10
+      },
+      {
+        "idx": 3,
+        "strategy": "覆盖优化C",
+        "front": [
+          9,
+          14,
+          22,
+          31,
+          33
+        ],
+        "back": [
+          4,
+          6
+        ],
+        "score": 10
+      },
+      {
+        "idx": 4,
+        "strategy": "覆盖优化D",
+        "front": [
+          10,
+          14,
+          15,
+          22,
+          25
+        ],
+        "back": [
+          4,
+          11
+        ],
+        "score": 10
+      }
+    ],
+    "back_predictions": [
+      {
+        "rank": 1,
+        "num": 2,
+        "score": 4.0
+      },
+      {
+        "rank": 2,
+        "num": 7,
+        "score": 3.18
+      },
+      {
+        "rank": 3,
+        "num": 5,
+        "score": 3.07
+      }
+    ],
+    "actual": {
+      "period": "26044",
+      "front": [
+        3,
+        8,
+        22,
+        26,
+        29
+      ],
+      "back": [
+        7,
+        10
+      ]
+    },
+    "review": [
+      {
+        "idx": 1,
+        "hit_front": 2,
+        "hit_back": 1,
+        "prize": "未中奖"
+      },
+      {
+        "idx": 2,
+        "hit_front": 0,
+        "hit_back": 0,
+        "prize": "未中奖"
+      },
+      {
+        "idx": 3,
+        "hit_front": 1,
+        "hit_back": 0,
+        "prize": "未中奖"
+      },
+      {
+        "idx": 4,
+        "hit_front": 1,
+        "hit_back": 0,
+        "prize": "未中奖"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-04-24 19:52",
+    "based_on": "26043",
+    "window": 30,
+    "predictions": [
+      {
+        "idx": 1,
+        "strategy": "覆盖优化A",
+        "front": [
+          6,
+          10,
+          11,
+          18,
+          25
+        ],
+        "back": [
+          4,
+          11
+        ],
+        "score": 10
+      },
+      {
+        "idx": 2,
+        "strategy": "覆盖优化B",
+        "front": [
+          1,
+          15,
+          20,
+          32,
+          35
+        ],
+        "back": [
+          4,
+          6
+        ],
+        "score": 10
+      },
+      {
+        "idx": 3,
+        "strategy": "覆盖优化C",
+        "front": [
+          1,
+          6,
+          13,
+          20,
+          29
+        ],
+        "back": [
+          4,
+          11
+        ],
+        "score": 10
+      },
+      {
+        "idx": 4,
+        "strategy": "覆盖优化D",
+        "front": [
+          4,
+          7,
+          20,
+          23,
+          26
+        ],
+        "back": [
+          1,
+          3
+        ],
+        "score": 10
+      }
+    ],
+    "back_predictions": [
+      {
+        "rank": 1,
+        "num": 2,
+        "score": 4.0
+      },
+      {
+        "rank": 2,
+        "num": 4,
+        "score": 3.7
+      },
+      {
+        "rank": 3,
+        "num": 5,
+        "score": 3.07
+      }
+    ],
+    "actual": {
+      "period": "26043",
+      "front": [
+        8,
+        12,
+        14,
+        19,
+        22
+      ],
+      "back": [
+        11,
+        12
+      ]
+    },
+    "review": [
+      {
+        "idx": 1,
+        "hit_front": 0,
+        "hit_back": 1,
+        "prize": "未中奖"
+      },
+      {
+        "idx": 2,
+        "hit_front": 0,
+        "hit_back": 0,
+        "prize": "未中奖"
+      },
+      {
+        "idx": 3,
+        "hit_front": 0,
+        "hit_back": 1,
+        "prize": "未中奖"
+      },
+      {
+        "idx": 4,
+        "hit_front": 0,
+        "hit_back": 0,
+        "prize": "未中奖"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-03 11:16",
+    "based_on": "26047",
+    "window": 30,
+    "predictions": [
+      {
+        "idx": 1,
+        "strategy": "覆盖优化A",
+        "front": [
+          4,
+          16,
+          23,
+          29,
+          31
+        ],
+        "back": [
+          3,
+          6
+        ],
+        "score": 10
+      },
+      {
+        "idx": 2,
+        "strategy": "覆盖优化B",
+        "front": [
+          5,
+          16,
+          17,
+          26,
+          30
+        ],
+        "back": [
+          1,
+          8
+        ],
+        "score": 10
+      },
+      {
+        "idx": 3,
+        "strategy": "覆盖优化C",
+        "front": [
+          2,
+          10,
+          17,
+          26,
+          31
+        ],
+        "back": [
+          6,
+          12
+        ],
+        "score": 10
+      },
+      {
+        "idx": 4,
+        "strategy": "覆盖优化D",
+        "front": [
+          3,
+          6,
+          15,
+          30,
+          31
+        ],
+        "back": [
+          2,
+          12
+        ],
+        "score": 10
+      }
+    ],
+    "back_predictions": [
+      {
+        "rank": 1,
+        "num": 2,
+        "score": 4.0
+      },
+      {
+        "rank": 2,
+        "num": 3,
+        "score": 3.7
+      },
+      {
+        "rank": 3,
+        "num": 5,
+        "score": 3.07
+      }
+    ],
+    "actual": {
+      "period": "26048",
+      "front": [
+        11,
+        17,
+        20,
+        23,
+        35
+      ],
+      "back": [
+        1,
+        10
+      ]
+    },
+    "review": [
+      {
+        "idx": 1,
+        "hit_front": 1,
+        "hit_back": 0,
+        "prize": "未中奖"
+      },
+      {
+        "idx": 2,
+        "hit_front": 1,
+        "hit_back": 1,
+        "prize": "未中奖"
+      },
+      {
+        "idx": 3,
+        "hit_front": 1,
+        "hit_back": 0,
+        "prize": "未中奖"
+      },
+      {
+        "idx": 4,
+        "hit_front": 0,
+        "hit_back": 0,
+        "prize": "未中奖"
+      }
+    ]
+  }
+]

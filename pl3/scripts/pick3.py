@@ -154,6 +154,93 @@ def _save_archive(d):
     ARCHIVE_FILE.write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def cmd_analyze(_):
+    """分析最近30期，输出统计"""
+    print("=" * 58)
+    print("  [Step 2] 统计分析（最近30期）")
+    print("=" * 58)
+    
+    history = _load_history()
+    if not history:
+        print("无历史数据，请先运行 fetch")
+        return
+    
+    recent = history[:30]
+    latest = recent[0]
+    nums = f"{latest['hundreds']}{latest['tens']}{latest['units']}"
+    print(f"最新: {latest['period']}  开奖号 {latest['hundreds']} {latest['tens']} {latest['units']}  [{latest['group_type']}]\n")
+    
+    # 各位统计
+    h_nums = [r['hundreds'] for r in recent]
+    t_nums = [r['tens'] for r in recent]
+    u_nums = [r['units'] for r in recent]
+    
+    h_cnt = Counter(h_nums)
+    t_cnt = Counter(t_nums)
+    u_cnt = Counter(u_nums)
+    
+    print("── 百位热号 ──")
+    for n, c in h_cnt.most_common(5): print(f"  {n}: {c}次")
+    print("\n── 十位热号 ──")
+    for n, c in t_cnt.most_common(5): print(f"  {n}: {c}次")
+    print("\n── 个位热号 ──")
+    for n, c in u_cnt.most_common(5): print(f"  {n}: {c}次")
+    
+    # 和值
+    sums = [r['sum_val'] for r in recent]
+    print(f"\n── 和值 ──  均值={statistics.mean(sums):.1f}  σ={statistics.stdev(sums):.1f}")
+    
+    # 跨度
+    spans = [r['span'] for r in recent]
+    print(f"── 跨度 ──  均值={statistics.mean(spans):.1f}")
+    
+    # 类型分布
+    types = Counter(r['group_type'] for r in recent)
+    print(f"\n── 类型分布 ──  豹子:{types['豹子']}  组三:{types['组三']}  组六:{types['组六']}")
+
+def cmd_recommend(_):
+    """生成推荐"""
+    print("=" * 58)
+    print("  [Step 3] 生成推荐")
+    print("=" * 58)
+    
+    history = _load_history()
+    if not history:
+        print("无历史数据，请先运行 fetch")
+        return
+    
+    recent = history[:30]
+    
+    # 各位热号
+    h_hot = [n for n, _ in Counter(r['hundreds'] for r in recent).most_common(3)]
+    t_hot = [n for n, _ in Counter(r['tens'] for r in recent).most_common(3)]
+    u_hot = [n for n, _ in Counter(r['units'] for r in recent).most_common(3)]
+    
+    print(f"\n百位热号: {h_hot}")
+    print(f"十位热号: {t_hot}")
+    print(f"个位热号: {u_hot}")
+    
+    print("\n── 推荐5注 ──")
+    for i in range(RECOMMEND_N):
+        rec = f"{random.choice(h_hot)} {random.choice(t_hot)} {random.choice(u_hot)}"
+        print(f"  第{i+1}注: {rec}")
+
+def cmd_review(args):
+    """复盘"""
+    if len(args.nums) != 4:
+        print("用法: review <期号> <百位> <十位> <个位>")
+        return
+    period, h, t, u = args.nums
+    history = _load_history()
+    found = next((r for r in history if r['period'] == period), None)
+    if not found:
+        print(f"未找到期号 {period}")
+        return
+    print(f"期号 {period} 开奖: {found['hundreds']} {found['tens']} {found['units']}")
+    print(f"您的号码: {h} {t} {u}")
+    match = sum(1 for a, b in zip([h, t, u], [found['hundreds'], found['tens'], found['units']]) if a == b)
+    print(f"匹配数: {match}")
+
 # ── 6. 入口 ──────────────────────────────────────────
 
 def main():
